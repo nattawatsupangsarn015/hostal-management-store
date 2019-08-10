@@ -94,7 +94,7 @@ export default {
 
 .content-card {
     width: 95%;
-    height: 60%;
+    height: 100%;
     display: flex;
 }
 
