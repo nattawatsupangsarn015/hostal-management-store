@@ -3,6 +3,7 @@
         <Loader v-if="this.showLoader" />
         <Header />
         <Home />
+        <Footer />
     </section>
 </template>
 
@@ -11,13 +12,15 @@ import { mapState } from 'vuex'
 import Loader from './Loader.vue'
 import Header from './Header/Header.vue'
 import Home from './Home/Home.vue'
+import Footer from './Footer/Footer.vue'
 import {store} from '../store'
 
 export default {
     components: {
         Loader,
         Header,
-        Home
+        Home,
+        Footer
     },
     computed: {
         ...mapState(['showLoader'])

@@ -1,7 +1,7 @@
 <template>
     <section class="hidden-sm-and-up">
         <div class="header-image">
-            <img class="image-content" src="../../assets/header.jpg" />
+            <img class="image-content" src="../../assets/header.jpg" alt="header-image" />
             <div class="header-text">
                 Hostel Management
             </div>

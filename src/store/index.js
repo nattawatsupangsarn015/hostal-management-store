@@ -55,6 +55,26 @@ export const store = new Vuex.Store({
           state.showLoader = false 
         }, 500);
       }
+    },
+
+    async REGISTER_USER(state, options = {}) {
+      state.showLoader = true
+      try {
+        const res = await axios.post('http://localhost:8080/api/backend/register', options)
+        if(res.status === 201) {
+          setTimeout(() => { 
+            state.showLoader = false
+            alert('Register success!')
+            $router.go(-1)
+          }, 500);
+        }
+      }
+      catch (err) {
+        setTimeout(() => {
+          state.showLoader = false
+          alert(err.response.data)
+        }, 500);
+      }
     }
   },
 

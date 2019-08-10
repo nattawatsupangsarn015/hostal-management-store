@@ -21,9 +21,9 @@
                     <i v-if="showPassword" @click="showPassword = false" class="material-icons icon-password">visibility</i>
                     <i v-else @click="showPassword = true" class="material-icons icon-password">visibility_off</i>
                 </div>
-                <div class="register-text">
+                <router-link tag="div" to="/register" class="register-text">
                     Join with us
-                </div>
+                </router-link>
                 <div class="login-button-frame">
                     <div @click="loginFunc()" class="login-button">
                         LOGIN

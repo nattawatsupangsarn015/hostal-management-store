@@ -1,8 +1,8 @@
 <template>
     <section>
-        <HomeL />
-        <HomeM />
-        <HomeS />
+        <HomeL style="min-height: calc(100vh - 80px - 4rem);" />
+        <HomeM style="min-height: calc(100vh - 80px - 4rem);" />
+        <HomeS style="min-height: calc(100vh - 80px - 2rem);" />
     </section>
 </template>
 
