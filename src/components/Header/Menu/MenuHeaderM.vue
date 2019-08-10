@@ -5,11 +5,14 @@
         </div>
         <div class="menu-frame">
             <div class="menu-content">
-                All Hostel
-            </div>
-            <div class="menu-content">
                 My Booking
             </div>
+            <div class="menu-content">
+                Register
+            </div>
+            <router-link tag="div" to="/login" class="menu-content">
+                Login
+            </router-link>
         </div>
     </section>
 </template>

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    showMenu: false
+    showMenu: false,
+    showLoader: false
   },
   actions: {
     // 

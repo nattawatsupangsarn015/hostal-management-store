@@ -1,12 +1,12 @@
 <template>
     <section class="hidden-sm-and-down">
         <div class="header-frame">
-            <div class="icon-header">
+            <router-link tag="div" to="/" class="icon-header">
                 <div class="icon-header-pic">
                     <i class="material-icons" style="font-size: 2rem;">hotel</i>
                 </div>
                 Hostel Management
-            </div>
+            </router-link>
             <div class="menu-header">
                 <div class="search-input-frame">
                     <input type="text" id="enterSearch" v-model="searchItem" placeholder="Search" class="search-input" />
@@ -15,14 +15,14 @@
                     </div>
                 </div>
                 <div class="menu-text">
-                    All Hostel 
-                </div>
-                <div class="menu-text">
                     My Booking
                 </div>
-                <div class="login-button">
-                    Login
+                <div class="menu-text">
+                    Register
                 </div>
+                <router-link tag="div" to="/login" class="menu-text">
+                    Login
+                </router-link>
             </div>
         </div>
     </section>
@@ -61,7 +61,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
 }
 
 .menu-header {
@@ -103,7 +102,7 @@ export default {
 }
 
 .search-input-frame {
-    width: 3rem;
+    width: 7rem;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -187,17 +186,6 @@ export default {
     background: #F39C12;
     color: #ffff;
     transition: 0.3s;
-}
-
-.login-button {
-    margin-right: 1rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 7rem;
-    cursor: pointer;
-    color: #F39C12;
 }
 
 </style>

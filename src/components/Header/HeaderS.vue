@@ -56,7 +56,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    margin-bottom: 1rem;
 }
 
 .icon-header {
