@@ -1,5 +1,5 @@
 <template>
     <section class="hidden-md-and-up hidden-xs-only">
-        Register M
+        Product M
     </section>
 </template>

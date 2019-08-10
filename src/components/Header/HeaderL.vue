@@ -14,12 +14,12 @@
                         <i class="material-icons icon-search">search</i>
                     </div>
                 </div>
-                <div class="menu-text">
+                <router-link tag="div" to="/booking" class="menu-text">
                     My Booking
-                </div>
-                <div class="menu-text">
+                </router-link>
+                <router-link tag="div" to="/register" class="menu-text">
                     Register
-                </div>
+                </router-link>
                 <router-link v-if="!(this.auth)" tag="div" to="/login" class="menu-text">
                     Login
                 </router-link>

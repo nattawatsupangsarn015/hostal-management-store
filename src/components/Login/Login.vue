@@ -18,6 +18,9 @@ export default {
     mounted() {
         const auth =  this.$cookie.get('auth')
         this.$store.dispatch('setAuth', auth)
+        if(this.auth){
+            this.$router.push('/')
+        }
     },
     components: {
         Loader,
@@ -26,7 +29,8 @@ export default {
         LoginS
     },
     computed: {
-        ...mapState(['showLoader'])
+        ...mapState(['showLoader']),
+        ...mapState(['auth'])
     },
     middleware: 'notAuthenticated'
 }

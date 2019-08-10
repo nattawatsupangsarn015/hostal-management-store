@@ -1,5 +1,6 @@
 <template>
     <section class="hidden-sm-and-down">
-        Register L
+        Product L
+        {{this.$route.params.id}}
     </section>
 </template>

@@ -1,5 +1,5 @@
 <template>
     <section class="hidden-sm-and-down">
-        Register L
+        Booking L
     </section>
 </template>

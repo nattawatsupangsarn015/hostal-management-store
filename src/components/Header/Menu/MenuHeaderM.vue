@@ -4,12 +4,12 @@
             x
         </div>
         <div class="menu-frame">
-            <div class="menu-content">
+            <router-link tag="div" to="/booking" class="menu-content">
                 My Booking
-            </div>
-            <div class="menu-content">
+            </router-link>
+            <router-link tag="div" to="/register" class="menu-content">
                 Register
-            </div>
+            </router-link>
             <router-link v-if="!(this.auth)" tag="div" to="/login" class="menu-content">
                     Login
             </router-link>
