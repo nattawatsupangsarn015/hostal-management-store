@@ -25,7 +25,7 @@
                     Join with us
                 </div>
                 <div class="login-button-frame">
-                    <div class="login-button">
+                    <div @click="loginFunc()" class="login-button">
                         LOGIN
                     </div>
                 </div>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     data() {
         return {
@@ -42,6 +44,32 @@ export default {
             password: "",
             showPassword: false
         }
+    },
+    methods: {
+        loginFunc() {
+            this.$store.commit("LOGIN_USER", {
+                data: { 
+                    username: this.username, 
+                    password: this.password 
+                }
+            })
+            this.username = ""
+            this.password = ""
+            this.postLogin()
+        },
+        postLogin() {
+            setTimeout(() => { // we simulate the async request with timeout.
+                const auth = this.accessToken
+                if(this.accessToken !== ""){
+                    this.$store.commit('setAuth', auth)
+                    this.$cookie.set('auth', auth);
+                    this.$router.push('/')
+                }
+            }, 1000)
+        }
+    },
+    computed: {
+        ...mapState(['accessToken'])
     }
 }
 </script>

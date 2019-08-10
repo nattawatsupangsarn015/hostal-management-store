@@ -20,15 +20,20 @@
                 <div class="menu-text">
                     Register
                 </div>
-                <router-link tag="div" to="/login" class="menu-text">
+                <router-link v-if="!(this.auth)" tag="div" to="/login" class="menu-text">
                     Login
                 </router-link>
+                <div @click="logoutFunc()" v-else class="menu-text-logout">
+                    Logout
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
     mounted() {
         var enter = document.getElementById("enterSearch");
@@ -45,9 +50,17 @@ export default {
         }
     },
     methods: {
+        logoutFunc() {
+            this.$store.commit("LOGOUT_USER")
+            this.$cookie.delete('auth')
+            this.$store.commit('setAuth', null)
+        },
         searchFunc() {
             console.log('You search : ' + this.searchItem)
         }
+    },
+    computed: {
+        ...mapState(['auth'])
     }
 }
 </script>
@@ -66,10 +79,10 @@ export default {
 .menu-header {
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
     margin-right: 3rem;
-    width: 35%;
+    width: 45%;
 }
 
 .icon-header {
@@ -184,6 +197,23 @@ export default {
 
 .menu-text:hover {
     background: #F39C12;
+    color: #ffff;
+    transition: 0.3s;
+}
+
+.menu-text-logout {
+    margin-right: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7rem;
+    cursor: pointer;
+    color: #E74C3C;
+}
+
+.menu-text-logout:hover {
+    background: #E74C3C;
     color: #ffff;
     transition: 0.3s;
 }
