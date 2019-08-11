@@ -56,7 +56,12 @@ export default {
             this.$store.commit('setAuth', null)
         },
         searchFunc() {
-            console.log('You search : ' + this.searchItem)
+            if(this.searchItem){
+                this.$store.commit("FETCH_SEARCH_PRODUCT", {id: this.searchItem})
+            }
+            else {
+                this.$store.commit('FETCH_PRODUCTS')
+            }
         }
     },
     computed: {

@@ -12,6 +12,10 @@ import HomeM from './HomeM.vue';
 import HomeS from './HomeS.vue';
 
 export default {
+    mounted() {
+        this.$store.commit('FETCH_PRODUCTS')
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    },
     components: {
         HomeL,
         HomeM,

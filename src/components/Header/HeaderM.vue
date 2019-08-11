@@ -2,12 +2,12 @@
     <section class="hidden-md-and-up hidden-xs-only">
         <MenuHeaderM v-if="this.showMenu" />
         <div class="header-frame">
-            <div class="icon-header">
+            <router-link tag="div" to="/" class="icon-header">
                 <div class="icon-header-pic">
                     <i class="material-icons" style="font-size: 2rem;">hotel</i>
                 </div>
                 Hostel Management
-            </div>
+            </router-link>
             <div class="menu-header">
                 <div class="search-input-frame">
                     <input type="text" id="enterSearch" v-model="searchItem" placeholder="Search" class="search-input" />
@@ -36,7 +36,12 @@ export default {
             this.$store.commit('SHOW_MENU', {show: 'show'})
         },
         searchFunc() {
-            console.log('Your search: ' + this.searchItem)
+            if(this.searchItem){
+                this.$store.commit("FETCH_SEARCH_PRODUCT", {id: this.searchItem})
+            }
+            else {
+                this.$store.commit('FETCH_PRODUCTS')
+            }
         }
     },
     components: {
