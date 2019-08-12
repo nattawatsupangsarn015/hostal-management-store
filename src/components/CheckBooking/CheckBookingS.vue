@@ -2,7 +2,10 @@
     <section class="hidden-sm-and-up">
          <div class="content-position">
             <div class="content-frame">
-                <div class="content-set-size" v-for="(item, index) in this.booking" :key="index">
+                <div class="no-data" v-if="this.booking.length === 0">
+                    You have no booking.
+                </div>
+                <div v-else class="content-set-size" v-for="(item, index) in this.booking" :key="index">
                     <div class="content-data">
                         <div class="header-data">
                             <h1>Booking Number: {{item.bookingNumber}}</h1>
@@ -111,6 +114,14 @@ export default {
     align-items: center;
     margin: 5px 0rem;
     font-size: 10px;
+}
+
+.no-data {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

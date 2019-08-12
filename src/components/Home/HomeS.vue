@@ -9,6 +9,7 @@
         <div class="content-position">
             <div class="content-frame">
                 <div class="content-set-size" v-for="(item, index) in this.products" :key="index">
+                    <div class="sold-out" v-if="!item.allotment">SOLD OUT</div>
                     <router-link tag="div" :to="'/product/' + item._id" class="content-data">
                         <h1>{{item.name}}</h1>
                         <div class="content-detail">
@@ -79,9 +80,25 @@ export default {
 }
 
 .content-set-size {
+    position: relative;
     width: 100%;
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.sold-out {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-weight: 700;
+    color: #ffff;
+    background-color: rgb(231, 76, 60, 0.9);
+    width: 40%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
 }
 
 .content-data {

@@ -2,7 +2,10 @@
     <section class="hidden-md-and-up hidden-xs-only">
          <div class="content-position">
             <div class="content-frame">
-                <div class="content-set-size" v-for="(item, index) in this.booking" :key="index">
+                <div class="no-data" v-if="this.booking.length === 0">
+                    You have no booking.
+                </div>
+                <div v-else class="content-set-size" v-for="(item, index) in this.booking" :key="index">
                     <div class="content-data">
                         <div class="header-data">
                             <i class="material-icons" style="font-size: 1.7rem; margin-right: 1rem;">hotel</i> 
@@ -110,6 +113,14 @@ export default {
     justify-content: flex-end;
     align-items: center;
     margin: 5px 0rem;
+}
+
+.no-data {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

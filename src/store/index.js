@@ -168,10 +168,28 @@ export const store = new Vuex.Store({
         }
       }
       catch(err) {
-        setTimeout(() => {
-          alert(err.response.data)
-          state.showLoader = false
-        }, 500);
+        if(err.response.status === 401) {
+          setTimeout(() => { 
+            alert('Your session is time out. Please login again.')
+            document.cookie = 'auth=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            state.accessToken = ""
+            state.auth = null
+            router.push('/login')
+            state.showLoader = false
+          }, 500);
+        }
+        else if(err.response.status === 404){
+          setTimeout(() => {
+            state.booking = []
+            state.showLoader = false
+          }, 500);
+        }
+        else {
+          setTimeout(() => {
+            alert(err.response.data)
+            state.showLoader = false
+          }, 500);
+        }
       }
     }
   },
