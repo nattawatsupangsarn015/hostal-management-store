@@ -2,6 +2,7 @@
     <section class="hidden-sm-and-down">
         <div class="header-frame">
             <router-link tag="div" to="/" class="icon-header">
+                <div @click="refreshFunc()" class="refresh-func"/>
                 <div class="icon-header-pic">
                     <i class="material-icons" style="font-size: 2rem;">hotel</i>
                 </div>
@@ -50,18 +51,22 @@ export default {
         }
     },
     methods: {
-        logoutFunc() {
-            this.$store.commit("LOGOUT_USER")
-            this.$cookie.delete('auth')
-            this.$store.commit('setAuth', null)
-        },
         searchFunc() {
-            if(this.searchItem){
-                this.$store.commit("FETCH_SEARCH_PRODUCT", {id: this.searchItem})
+            if(this.searchItem) {
+                this.$store.commit('FETCH_SEARCH_PRODUCT', {id: this.searchItem})
             }
             else {
                 this.$store.commit('FETCH_PRODUCTS')
             }
+        },
+        refreshFunc() {
+            this.$store.commit('FETCH_PRODUCTS')
+        },
+        logoutFunc() {
+            this.$store.commit("LOGOUT_USER")
+            this.$cookie.delete('auth')
+            this.$store.commit('setAuth', null)
+            this.$router.push('/')
         }
     },
     computed: {
@@ -91,6 +96,7 @@ export default {
 }
 
 .icon-header {
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
@@ -100,6 +106,13 @@ export default {
     cursor: pointer;
     font-size: 1.2rem;
     transition: 0.3s;
+}
+
+.refresh-func {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .icon-header-pic {

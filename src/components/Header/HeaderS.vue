@@ -3,6 +3,7 @@
         <MenuHeaderS v-if="this.showMenu" />
         <div class="header-frame">
             <router-link tag="div" to="/" class="icon-header">
+                <div @click="refreshFunc()" class="refresh-func"/>
                 <div class="icon-header-pic">
                     <i class="material-icons" style="font-size: 2rem;">hotel</i>
                 </div>
@@ -31,16 +32,19 @@ export default {
         }
     },
     methods: {
-        activeMenu() {
-            this.$store.commit('SHOW_MENU', {show: 'show'})
-        },
         searchFunc() {
-            if(this.searchItem){
-                this.$store.commit("FETCH_SEARCH_PRODUCT", {id: this.searchItem})
+            if(this.searchItem) {
+                this.$store.commit('FETCH_SEARCH_PRODUCT', {id: this.searchItem})
             }
             else {
                 this.$store.commit('FETCH_PRODUCTS')
             }
+        },
+        refreshFunc() {
+            this.$store.commit('FETCH_PRODUCTS')
+        },
+        activeMenu() {
+            this.$store.commit('SHOW_MENU', {show: 'show'})
         }
     },
     components: {
@@ -64,6 +68,7 @@ export default {
 }
 
 .icon-header {
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
@@ -73,6 +78,13 @@ export default {
     cursor: pointer;
     font-size: 1rem;
     transition: 0.3s;
+}
+
+.refresh-func {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .icon-header:active {

@@ -18,7 +18,7 @@
                         <i v-else @click="showPassword = true" class="material-icons icon-password">visibility_off</i>
                     </div>
                     <div class="input-frame">
-                        <input class="input-data" type="text" placeholder="Birth day *ex dd/mm/yy" v-model="birthDay" />
+                        <input class="input-data" type="text" placeholder="Birth day *ex dd-mm-yy" v-model="birthDay" />
                         <input class="input-data" :type="confirmShowPassword ? 'text' : 'password'" placeholder="Confirm password" v-model="confirmPassword" />
                         <i v-if="confirmShowPassword" @click="confirmShowPassword = false" class="material-icons icon-password">visibility</i>
                         <i v-else @click="confirmShowPassword = true" class="material-icons icon-password">visibility_off</i>

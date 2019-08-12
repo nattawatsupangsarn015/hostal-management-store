@@ -3,7 +3,7 @@
         <div class="map-header">
             <GmapMap
             :center="center"
-            :zoom="7"
+            :zoom="18"
             map-type-id="terrain"
             style="width: 100%; height: 100%;"
             >
@@ -18,9 +18,9 @@
             <h1>{{this.product.name}} - <span style="color:#2ECC71;">{{this.product.price ? this.product.price.toLocaleString() : ' '}}</span> THB / NIGHT</h1>
             <div class="content-detail">{{this.product.detail}}</div>
             <div class="button-frame">
-                <div class="button-text">
+                <router-link tag="div" :to="'/reserve/' + this.product._id" class="button-text">
                     Book Now
-                </div>
+                </router-link>
             </div>
         </div>
     </section>

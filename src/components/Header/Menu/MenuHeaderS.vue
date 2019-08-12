@@ -37,9 +37,15 @@ export default {
             this.$store.commit("LOGOUT_USER")
             this.$cookie.delete('auth')
             this.$store.commit('setAuth', null)
+            this.$router.push('/')
         },
         searchFunc() {
-            console.log('You search : ' + this.searchItem)
+            if(this.searchItem){
+                this.$store.commit("FETCH_SEARCH_PRODUCT", {id: this.searchItem})
+            }
+            else {
+                this.$store.commit('FETCH_PRODUCTS')
+            }
         }
     },
     computed: {

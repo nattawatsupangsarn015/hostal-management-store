@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
     auth: null,
     accessToken: "",
     products: [],
-    product: {}
+    product: {},
+    booking: []
   },
   
   mutations: {
@@ -49,6 +50,7 @@ export const store = new Vuex.Store({
             state.showMenu = false
             state.accessToken = res.data
             alert('Login success!')
+            router.go(-1)
           }, 500);
         }
       }
@@ -116,6 +118,51 @@ export const store = new Vuex.Store({
         if(res.status === 200){
           setTimeout(() => {
             state.products = res.data
+            state.showLoader = false
+          }, 500);
+        }
+      }
+      catch(err) {
+        setTimeout(() => {
+          state.products = []
+          state.showLoader = false
+        }, 500);
+      }
+    },
+
+    async CREATE_BOOKING(state, options = {}){
+      state.showLoader = true
+      try {
+        const res = await axios.post('http://localhost:8080/api/backend/booking', options.data)
+        if(res.status === 201){
+          setTimeout(() => {
+            state.showLoader = false
+            alert('Your booking success, you can check your book in menu My booking.')
+            router.push('/')
+          }, 500);
+        }
+      }
+      catch(err) {
+        setTimeout(() => {
+          alert(err.response.data)
+          state.showLoader = false
+        }, 500);
+      }
+    },
+
+    async FETCH_BOOKING(state, options = {}) {
+      state.showLoader = true
+      const setHeaders = {
+        headers: {
+          'Authorization': state.auth,
+          'Content-type': 'application/json'
+        }
+      }
+      try {
+        const res = await axios.get('http://localhost:8080/api/backend/booking/' + options.id, setHeaders)
+        if(res.status === 200){
+          setTimeout(() => {
+            state.booking = res.data
             state.showLoader = false
           }, 500);
         }

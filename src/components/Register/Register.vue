@@ -15,6 +15,9 @@ import RegisterM from './RegisterM.vue'
 import RegisterS from './RegisterS.vue'
 
 export default {
+    mounted() {
+        this.$store.commit('SHOW_MENU')
+    },
     components: {
         Loader,
         RegisterL,
